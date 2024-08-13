@@ -16,7 +16,7 @@ exports.login=async (req,res)=>{
         const token =jwt.sign({user_id: user._id},'secret_token',{
             expiresIn: '1h'
         });
-        res.status(200).json(token);
+        res.status(200).json({token,isAdmin: user.isAdmin});
     }catch(err){
     console.error(err);
     }
